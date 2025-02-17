@@ -2,7 +2,6 @@ import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import cors from "cors";
 
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
@@ -19,13 +18,6 @@ const PORT = process.env.PORT || 5500;
 
 app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
 app.use(cookieParser());
-// app.use(cors());
-app.use(
-  cors({
-    origin: "http://localhost:3000", // Allow requests from this origin
-    methods: ["GET", "POST"], // Specify allowed methods
-  })
-);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
